@@ -14,7 +14,7 @@ import PieChart from "../components/Charts/Area"; */
 
 import Statistic from "../components/Statistic";
 
-import { api, corona1 } from "../services";
+import { corona1 } from "../services";
 
 export default {
   name: "Home",
