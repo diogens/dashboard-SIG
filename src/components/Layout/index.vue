@@ -16,27 +16,7 @@
             <span>Dashboard</span>
           </router-link>
         </a-menu-item>
-
-        <a-menu-item key="3">
-          <router-link :to="{ name: 'Home', params: { userId: 123 } }">
-            <a-icon type="rise"/>
-            <span>IBGE</span>
-          </router-link>
-        </a-menu-item>
-
-        <a-menu-item key="4">
-          <router-link :to="{ name: 'Home', params: { userId: 123 } }">
-            <a-icon type="fall"/>
-            <span>IBGE</span>
-          </router-link>
-        </a-menu-item>
-
-        <a-menu-item key="5">
-          <router-link :to="{ name: 'Home', params: { userId: 123 } }">
-            <a-icon type="pie-chart"/>
-            <span>IBGE</span>
-          </router-link>
-        </a-menu-item>
+        
       </a-menu>
     </a-layout-sider>
     <a-layout>
