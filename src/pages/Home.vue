@@ -5,21 +5,6 @@
       <Statistic :title="`${card2.titulo} Confirmados`" :content="card2.total" icon="area-chart"/>
       <Statistic :title="`${card3.titulo} Recuperados`" :content="card3.total" icon="bar-chart"/>
     </div>
-
-    <div class="columns is-gapless">
-        <div class="column">
-          No gap
-        </div>
-        <div class="column">
-          No gap
-        </div>
-        <div class="column">
-          No gap
-        </div>
-        <div class="column">
-          No gap
-        </div>
-      </div>
   </div>
 </template>
 
@@ -93,8 +78,6 @@ export default {
           this.card2.total = res.data.confirmados.total;
           this.card2.novos = res.data.confirmados.novos;
           this.card2.letalidade = res.confirmados.obitos.letalidade;
-
-          
 
           /* this.card1.titulo = res.data.obitos.titulo;
           this.card1.total = res.data.obitos.total;
