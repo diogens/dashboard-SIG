@@ -5,29 +5,36 @@
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
         <a-menu-item key="1">
           <router-link :to="{ name: 'Home', params: { userId: 123 } }">
-            <a-icon type="user"/>
-            <span>Perfil</span>
+            <a-icon type="home"/>
+            <span>Home</span>
           </router-link>
         </a-menu-item>
 
         <a-menu-item key="2">
-          <router-link :to="{ name: 'Home2', params: { userId: 123 } }">
-            <a-icon type="video-camera"/>
-            <span>Conferências</span>
+          <router-link :to="{ name: 'Home', params: { userId: 123 } }">
+            <a-icon type="area-chart"/>
+            <span>Dashboard</span>
           </router-link>
         </a-menu-item>
 
         <a-menu-item key="3">
           <router-link :to="{ name: 'Home', params: { userId: 123 } }">
-            <a-icon type="upload"/>
-            <span>Upload</span>
+            <a-icon type="rise"/>
+            <span>IBGE</span>
           </router-link>
         </a-menu-item>
 
         <a-menu-item key="4">
-          <router-link :to="{ name: 'Home2', params: { userId: 123 } }">
-            <a-icon type="upload"/>
-            <span>Upload</span>
+          <router-link :to="{ name: 'Home', params: { userId: 123 } }">
+            <a-icon type="fall"/>
+            <span>IBGE</span>
+          </router-link>
+        </a-menu-item>
+
+        <a-menu-item key="5">
+          <router-link :to="{ name: 'Home', params: { userId: 123 } }">
+            <a-icon type="pie-chart"/>
+            <span>IBGE</span>
           </router-link>
         </a-menu-item>
       </a-menu>

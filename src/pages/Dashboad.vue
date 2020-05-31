@@ -6,7 +6,7 @@
       <Statistic title="Nª POSTS" content="descrição" icon="bar-chart"/>
     </div>
     <div class="row">
-      <!-- <LineChart
+      <LineChart
         class="box"
         title="Doação nos ultimos 5 meses"
         series_name0="Name0001"
@@ -21,47 +21,29 @@
         series_name1="Name0002"
         :series_data0="series0"
         :series_data1="series1"
-      />-->
+      />
     </div>
   </div>
 </template>
 
 <script>
-/* import LineChart from "../components/Charts/Area";
-import PieChart from "../components/Charts/Area"; */
+import LineChart from "../components/Charts/Area";
+import PieChart from "../components/Charts/Area";
 
 import Statistic from "../components/Statistic";
-
-import { api } from "../services";
 
 export default {
   name: "Home",
   components: {
-    /* LineChart,
-    PieChart, */
+    LineChart,
+    PieChart,
     Statistic
   },
   data() {
     return {
-      nome: "Diogenes",
       series0: [0, 0, 33, 0, 0, 22, 12],
       series1: [10, 20, 55, 20, 12, 32, 14]
     };
-  },
-  created() {
-    this.getDados();
-  },
-  methods: {
-    getDados() {
-      api
-        .get(`/censos/nomes/${this.nome}`)
-        .then(res => {
-          console.log(res);
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
   }
 };
 </script>
