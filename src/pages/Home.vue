@@ -1,28 +1,25 @@
 <template>
   <div>
     <div class="row">
-      <Statistic title="ESTOQUES" content="descrição" icon="stock"/>
-      <Statistic title="SEGUIDORES" content="descrição" icon="area-chart"/>
-      <Statistic title="Nª POSTS" content="descrição" icon="bar-chart"/>
+      <Statistic :title="card1.titulo" :content="card1.total" icon="stock"/>
+      <Statistic :title="`${card2.titulo} Confirmados`" :content="card2.total" icon="area-chart"/>
+      <Statistic :title="`${card3.titulo} Recuperados`" :content="card3.total" icon="bar-chart"/>
     </div>
-    <div class="row">
-      <!-- <LineChart
-        class="box"
-        title="Doação nos ultimos 5 meses"
-        series_name0="Name0001"
-        series_name1="Name0002"
-        :series_data0="series0"
-        :series_data1="series1"
-      />
-      <PieChart
-        class="box"
-        title="Ações nos ultimos meses"
-        series_name0="Name0001"
-        series_name1="Name0002"
-        :series_data0="series0"
-        :series_data1="series1"
-      />-->
-    </div>
+
+    <div class="columns is-gapless">
+        <div class="column">
+          No gap
+        </div>
+        <div class="column">
+          No gap
+        </div>
+        <div class="column">
+          No gap
+        </div>
+        <div class="column">
+          No gap
+        </div>
+      </div>
   </div>
 </template>
 
@@ -32,7 +29,7 @@ import PieChart from "../components/Charts/Area"; */
 
 import Statistic from "../components/Statistic";
 
-import { api } from "../services";
+import { api, corona1 } from "../services";
 
 export default {
   name: "Home",
@@ -43,19 +40,67 @@ export default {
   },
   data() {
     return {
-      nome: "Diogenes",
       series0: [0, 0, 33, 0, 0, 22, 12],
-      series1: [10, 20, 55, 20, 12, 32, 14]
+      series1: [10, 20, 55, 20, 12, 32, 14],
+
+      card1: {
+        total: "",
+        titulo: "",
+        novos: "",
+        incidencia: "",
+        letalidade: ""
+      },
+
+      card2: {
+        total: "",
+        titulo: "",
+        novos: "",
+        incidencia: "",
+        letalidade: ""
+      },
+      card3: {
+        total: "",
+        titulo: "",
+        novos: "",
+        incidencia: "",
+        letalidade: ""
+      }
     };
+  },
+  mounted() {
+    /* this.getDados(); */
   },
   created() {
     this.getDados();
   },
   methods: {
     getDados() {
-      api
-        .get(`/censos/nomes/${this.nome}`)
+      corona1
+        .get(`/prod/PortalGeralApi`)
         .then(res => {
+          console.log(res.data.confirmados);
+          this.card3.titulo = res.data.confirmados.titulo;
+          this.card3.total = res.data.confirmados.total;
+          this.card3.total = res.data.confirmados.recuperados;
+          this.card3.total = res.data.confirmados.recuperados;
+
+          this.card1.titulo = res.data.obitos.titulo;
+          this.card1.total = res.data.obitos.total;
+          this.card1.novos = res.data.obitos.novos;
+          this.card1.letalidade = res.data.obitos.letalidade;
+
+          this.card2.titulo = res.data.confirmados.titulo;
+          this.card2.total = res.data.confirmados.total;
+          this.card2.novos = res.data.confirmados.novos;
+          this.card2.letalidade = res.confirmados.obitos.letalidade;
+
+          
+
+          /* this.card1.titulo = res.data.obitos.titulo;
+          this.card1.total = res.data.obitos.total;
+          this.card1.novos = res.data.obitos.novos;
+          this.card1.letalidade = res.data.obitos.letalidade; */
+
           console.log(res);
         })
         .catch(err => {

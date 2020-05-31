@@ -22,6 +22,21 @@
         :series_data0="series0"
         :series_data1="series1"
       />
+
+      <div class="columns is-gapless">
+        <div class="column">
+          No gap
+        </div>
+        <div class="column">
+          No gap
+        </div>
+        <div class="column">
+          No gap
+        </div>
+        <div class="column">
+          No gap
+        </div>
+      </div>
     </div>
   </div>
 </template>
