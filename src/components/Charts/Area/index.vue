@@ -1,5 +1,11 @@
 <template>
-  <VueApexCharts type="line" :options="chartOptions" :series="series" />
+  <VueApexCharts
+    width="100%"
+    height="230px"
+    type="bar"
+    :options="chartOptions"
+    :series="series"
+  />
 </template>
 
 <script>
@@ -39,18 +45,18 @@ export default {
       value: "I am the child.",
       series: [
         {
-          name: "High - 2013",
-          data: [0, 0, 0, 0, 0, 0, 0],
+          name: null,
+          data: null,
         },
         {
-          name: "Low - 2013",
-          data: [1, 1, 1, 1, 1, 1, 1],
+          name: null,
+          data: null,
         },
       ],
       chartOptions: {
         chart: {
           height: 350,
-          type: "line",
+          type: "bar",
           dropShadow: {
             enabled: true,
             color: "#000",
@@ -65,7 +71,7 @@ export default {
         },
         colors: ["#77B6EA", "#545454"],
         dataLabels: {
-          enabled: true,
+          enabled: false,
         },
         stroke: {
           curve: "smooth",
@@ -85,7 +91,8 @@ export default {
           size: 1,
         },
         xaxis: {
-          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+          categories: null,
+          fontSize: "12px",
           title: {
             /* text: "Month", */
           },

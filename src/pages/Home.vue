@@ -14,7 +14,6 @@
         class="column"
         :title="`${card2.titulo} Confirmados`"
         :content="card2.total"
-        :content2="card3.total"
         icon="area-chart"
       />
 
@@ -23,7 +22,6 @@
         class="column"
         :title="card1.titulo"
         :content="card1.total"
-        :content2="card3.total"
         icon="stock"
       />
     </div>
@@ -31,39 +29,33 @@
     <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop  ">
       <Area
         class="column"
-        title="Doação nos ultimos 5 meses"
-        series_name0="Name0001"
-        series_name1="Name0002"
-        :series_data0="series0"
+        title="Óbitos por Estado"
+        series_name1="Obitos Acumulados"
         :series_data1="series1"
         :categorie="categories"
       />
       <Area
         class="column"
         title="Doação nos ultimos 5 meses"
-        series_name0="Name0001"
-        series_name1="Name0002"
+        series_name0="Casos Acumulado"
         :series_data0="series2"
         :categorie="categories"
       />
     </div>
-
     <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop  ">
       <Area
         class="column"
-        title="Doação nos ultimos 5 meses"
-        series_name0="Name0001"
-        series_name1="Name0002"
+        title="Casos Acumulado por Estado"
+        series_name0="Casos Acumulado"
         :series_data0="series0"
-        :series_data1="series1"
         :categorie="categories"
       />
       <Area
         class="column"
-        title="Doação nos ultimos 5 meses"
-        series_name0="Name0001"
-        series_name1="Name0002"
-        :series_data0="series2"
+        title="Incidência"
+        series_name0="Casos Acumulado"
+        series_name1="Obitos Acumulados"
+        :series_data0="series3"
         :categorie="categories"
       />
     </div>
@@ -86,10 +78,11 @@ export default {
   },
   data() {
     return {
-      series0: [],
-      series1: [],
-      series2: [],
-      categories: [],
+      series0: null,
+      series1: null,
+      series2: null,
+      series3: null,
+      categories: null,
 
       card1: {
         total: "",
@@ -118,41 +111,48 @@ export default {
   computed: {},
   async mounted() {
     console.log("oi");
+    this.getDados();
   },
   async created() {
-    corona1.get(`/prod/PortalEstado`).then((res) => {
-      let data = res.data.map((value) => {
-        /* value.casosAcumulado.push(dado0); */
-        dado0.push(value.casosAcumulado);
-        dado1.push(value.obitosAcumulado);
-        dado2.push(parseInt(value.populacaoTCU2019));
-        estado.push(value.nome);
-        /* value.casosAcumulado.push(dado1) */
-        return value.casosAcumulado;
-      });
-      return data;
-    });
-
-    var dado0 = [];
-    var dado1 = [];
-    var dado2 = [];
-    var estado = [];
-
-    this.series0 = dado0.reverse();
-    this.series1 = dado1;
-    this.series2 = dado2;
-    this.categories = estado;
-
-    console.log("==>", estado);
-
     this.getDados();
   },
   methods: {
     getDados() {
+      corona1.get(`/prod/PortalEstado`).then((res) => {
+        console.log(res);
+      });
+      corona1.get(`/prod/PortalEstado`).then((res) => {
+        let data = res.data.map((value) => {
+          /* console.log(value); */
+          /* value.casosAcumulado.push(dado0); */
+          dado0.push(value.casosAcumulado);
+          dado1.push(value.obitosAcumulado);
+          dado2.push(parseInt(value.populacaoTCU2019));
+          dado3.push(parseInt(value.incidencia));
+          estado.push(value.nome);
+          /* value.casosAcumulado.push(dado1) */
+          return value.casosAcumulado;
+        });
+        return data;
+      });
+
+      var dado0 = [];
+      var dado1 = [];
+      var dado2 = [];
+      var dado3 = [];
+      var estado = [];
+
+      this.series0 = dado0.reverse();
+      this.series1 = dado1;
+      this.series2 = dado2;
+      this.series3 = dado3;
+      this.categories = estado;
+
+      console.log("==>", estado);
+
       corona1
         .get(`/prod/PortalGeralApi`)
         .then((res) => {
-          console.log(res.data);
           this.card3.titulo = res.data.confirmados.titulo;
           this.card3.total = res.data.confirmados.total;
           this.card3.novos = res.data.confirmados.novos;
