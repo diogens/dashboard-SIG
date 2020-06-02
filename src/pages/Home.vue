@@ -27,17 +27,17 @@
     </div>
 
     <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop  ">
-      <Area
+      <!-- <Area
         class="column"
         title="Óbitos por Estado"
         series_name1="Obitos Acumulados"
         :series_data1="series1"
         :categorie="categories"
-      />
+      /> -->
       <Area
         class="column"
-        title="Doação nos ultimos 5 meses"
-        series_name0="Casos Acumulado"
+        title="População por Estado"
+        series_name0="nº População"
         :series_data0="series2"
         :categorie="categories"
       />
@@ -52,8 +52,8 @@
       />
       <Area
         class="column"
-        title="Incidência"
-        series_name0="Casos Acumulado"
+        title="Incidência por Estado"
+        series_name0="Incidência"
         series_name1="Obitos Acumulados"
         :series_data0="series3"
         :categorie="categories"
@@ -119,7 +119,7 @@ export default {
   methods: {
     getDados() {
       corona1.get(`/prod/PortalEstado`).then((res) => {
-        console.log(res);
+        console.log("resposta =>", res);
       });
       corona1.get(`/prod/PortalEstado`).then((res) => {
         let data = res.data.map((value) => {
@@ -148,7 +148,7 @@ export default {
       this.series3 = dado3;
       this.categories = estado;
 
-      console.log("==>", estado);
+      /* console.log("==>", estado); */
 
       corona1
         .get(`/prod/PortalGeralApi`)
