@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="row">
-      <Statistic title="ESTOQUES" content="descrição" icon="stock"/>
-      <Statistic title="SEGUIDORES" content="descrição" icon="area-chart"/>
-      <Statistic title="Nª POSTS" content="descrição" icon="bar-chart"/>
+      <Statistic title="ESTOQUES" content="descrição" icon="stock" />
+      <Statistic title="SEGUIDORES" content="descrição" icon="area-chart" />
+      <Statistic title="Nª POSTS" content="descrição" icon="bar-chart" />
     </div>
     <div class="row">
       <LineChart
@@ -22,21 +22,6 @@
         :series_data0="series0"
         :series_data1="series1"
       />
-
-      <div class="columns is-gapless">
-        <div class="column">
-          No gap
-        </div>
-        <div class="column">
-          No gap
-        </div>
-        <div class="column">
-          No gap
-        </div>
-        <div class="column">
-          No gap
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -52,14 +37,14 @@ export default {
   components: {
     LineChart,
     PieChart,
-    Statistic
+    Statistic,
   },
   data() {
     return {
       series0: [0, 0, 33, 0, 0, 22, 12],
-      series1: [10, 20, 55, 20, 12, 32, 14]
+      series1: [10, 20, 55, 20, 12, 32, 14],
     };
-  }
+  },
 };
 </script>
 
@@ -69,6 +54,7 @@ export default {
   flex-direction: row;
 }
 .box {
+  margin: 10px;
   width: 50%;
   padding: 10px;
   background: #fff;

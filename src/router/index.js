@@ -2,25 +2,26 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 
 import Home from "../pages/Home.vue";
+import Dashboard from "../pages/Dashboad.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     name: "Home",
-    component: Home
+    component: Home,
   },
   {
-    path: "/home2",
-    name: "Home2",
-    component: Home
-  }
+    path: "/dashboad",
+    name: "Dashboard",
+    component: Dashboard,
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
-  routes
+  routes,
 });
 
 export default router;

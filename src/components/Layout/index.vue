@@ -1,22 +1,21 @@
 <template>
   <a-layout id="components-layout-demo-custom-trigger" style="height: 100vh">
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
-      <div class="logo"/>
+      <div class="logo" />
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
         <a-menu-item key="1">
           <router-link :to="{ name: 'Home', params: { userId: 123 } }">
-            <a-icon type="home"/>
+            <a-icon type="home" />
             <span>Home</span>
           </router-link>
         </a-menu-item>
 
         <a-menu-item key="2">
-          <router-link :to="{ name: 'Home', params: { userId: 123 } }">
-            <a-icon type="area-chart"/>
+          <router-link :to="{ name: 'Dashboard', params: { userId: 123 } }">
+            <a-icon type="area-chart" />
             <span>Dashboard</span>
           </router-link>
         </a-menu-item>
-        
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -28,7 +27,12 @@
         />
       </a-layout-header>
       <a-layout-content
-        :style="{ margin: '24px 16px', padding: '24px', background: '#fff', minHeight: '280px' }"
+        :style="{
+          margin: '24px 16px',
+          padding: '24px',
+          background: '#fff',
+          minHeight: '280px',
+        }"
       >
         <slot></slot>
       </a-layout-content>
@@ -39,9 +43,9 @@
 export default {
   data() {
     return {
-      collapsed: false
+      collapsed: false,
     };
-  }
+  },
 };
 </script>
 <style>

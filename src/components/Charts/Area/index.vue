@@ -1,11 +1,11 @@
 <template>
-  <VueApexCharts type="line" :options="chartOptions" :series="series"/>
+  <VueApexCharts type="line" :options="chartOptions" :series="series" />
 </template>
 
 <script>
 import VueApexCharts from "vue-apexcharts";
 export default {
-  name: "Home",
+  name: "Area",
   props: {
     title: String,
 
@@ -13,10 +13,12 @@ export default {
     series_data0: Array,
 
     series_name1: String,
-    series_data1: Array
+    series_data1: Array,
+
+    categorie: Array,
   },
   components: {
-    VueApexCharts
+    VueApexCharts,
   },
   created() {
     this.chartOptions.title.text = this._props.title;
@@ -26,11 +28,11 @@ export default {
 
     this.series[1].name = this._props.series_name1;
     this.series[1].data = this._props.series_data1;
+
+    this.chartOptions.xaxis.categories = this._props.categorie;
   },
   mounted() {
-    // Pass a value to the parent through the function
-    /* console.log(this); */
-    /* this.value1(this.value1); */
+    setTimeout(console.log("components time", this.series), 2000);
   },
   data() {
     return {
@@ -38,12 +40,12 @@ export default {
       series: [
         {
           name: "High - 2013",
-          data: [28, 29, 33, 36, 32, 32, 33]
+          data: [0, 0, 0, 0, 0, 0, 0],
         },
         {
           name: "Low - 2013",
-          data: [12, 11, 14, 18, 17, 13, 13]
-        }
+          data: [1, 1, 1, 1, 1, 1, 1],
+        },
       ],
       chartOptions: {
         chart: {
@@ -55,43 +57,43 @@ export default {
             top: 18,
             left: 7,
             blur: 10,
-            opacity: 0.2
+            opacity: 0.2,
           },
           toolbar: {
-            show: false
-          }
+            show: false,
+          },
         },
         colors: ["#77B6EA", "#545454"],
         dataLabels: {
-          enabled: true
+          enabled: true,
         },
         stroke: {
-          curve: "smooth"
+          curve: "smooth",
         },
         title: {
           text: "...",
-          align: "left"
+          align: "left",
         },
         grid: {
           borderColor: "#e7e7e7",
           row: {
             colors: ["#f3f3f3", "transparent"], // takes an array which will be repeated on columns
-            opacity: 0.5
-          }
+            opacity: 0.5,
+          },
         },
         markers: {
-          size: 1
+          size: 1,
         },
         xaxis: {
           categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
           title: {
             /* text: "Month", */
-          }
+          },
         },
         yaxis: {
           title: {
-            text: ""
-          }
+            text: "",
+          },
           /* min: 5,
           max: 40, */
         },
@@ -100,11 +102,11 @@ export default {
           horizontalAlign: "right",
           floating: true,
           offsetY: -25,
-          offsetX: -5
-        }
-      }
+          offsetX: -5,
+        },
+      },
     };
-  }
+  },
 };
 </script>
 

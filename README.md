@@ -23,6 +23,4 @@ Dashboard desenvolvido para atividade/apresentação de sistemas de informaçõe
 
 ## 😍 Resultado:
 
-<img src=".github/demo.gif" height="400">
-
-<blockquote align="center">“Não espere resultados brilhantes se suas metas não forem claras”!</blockquote>
+<!-- <img src=".github/demo.gif" height="400"> -->
