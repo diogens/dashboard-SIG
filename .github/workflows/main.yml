@@ -42,7 +42,7 @@ jobs:
         
     
     - name: upload filed to bucket
-      run: gsutil -m rsync -R ./build gs://"$BUCKET"
+      run: gsutil -m rsync -R ./public gs://"$BUCKET"
       
     - name: Allow public access
       run: gsutil -m acl ch -R -u AllUsers:R gs://"$BUCKET" 
