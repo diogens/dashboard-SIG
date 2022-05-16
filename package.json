@@ -11,7 +11,7 @@
     "@vue/cli-plugin-babel": "4.1.1",
     "ant-design-vue": "1.6.1",
     "apexcharts": "3.19.2",
-    "axios": "0.19.2",
+    "axios": "0.21.2",
     "buefy": "0.8.20",
     "vue": "^2.6.11",
     "vue-apexcharts": "1.5.3",
